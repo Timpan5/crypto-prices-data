@@ -8,6 +8,10 @@ const coinOptions = new Map({
   ETH: 'Ethereum',
 });
 
+function handleInputChange(text) {
+  alert(text);
+}
+
 const mapStateToProps = (state) => {
   const currentCoin = state.get('currentCoin');
   return ({
@@ -20,6 +24,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps)  => {
     coin: stateProps.coin,
     coinNameUpdate: dispatchProps.coinNameUpdate,
     coinOptions,
+    handleInputChange,
   });
 };
 
