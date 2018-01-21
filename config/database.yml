@@ -1,12 +1,12 @@
 default: &default
   adapter: postgresql
-  username:
-  password:
-  host: localhost
+  username: vboppenlpgmopz
+  password: 8aceef766bed3c41029bdf08ac9a9a12a2d0bf9beaf23e9de8372c237fd9480c
+  host: ec2-54-197-233-123.compute-1.amazonaws.com
 
 development:
   <<: *default
-  database: crypto_prices_development
+  database: d3ope14gk83bpq
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -17,4 +17,4 @@ test:
 
 production:
   <<: *default
-  database: crypto_prices_production
+  database: d3ope14gk83bpq
