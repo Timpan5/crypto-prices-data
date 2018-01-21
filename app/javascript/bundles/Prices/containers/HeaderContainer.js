@@ -11,7 +11,7 @@ const coinOptions = new Map({
 });
 
 function handleInputChange(text) {
-  alert(text);
+  console.log(text);
 }
 
 const actions = {
@@ -20,13 +20,16 @@ const actions = {
 }
 
 const mapStateToProps = (state) => {
-  const currentCoin = state.get('currentCoin');
+  const coin = state.get('currentCoin');
+  const coinSearchOptions = state.get('coinSearchOptions');
   return ({
-    coin: currentCoin,
+    coin,
+    coinSearchOptions,
   });
 };
 
 const mergeProps = (stateProps, dispatchProps, ownProps)  => {
+  const coinSearchOptions = stateProps.coinSearchOptions.map((option) => JSON.parse(option));
   return ({
     coin: stateProps.coin,
     coinNameUpdate: dispatchProps.coinNameUpdate,
@@ -34,6 +37,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps)  => {
     handleInputChange,
     getCoinList,
     setCoinSearchOptions: dispatchProps.setCoinSearchOptions,
+    coinSearchOptions,
   });
 };
 

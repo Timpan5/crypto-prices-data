@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { fromJS, Map } from 'immutable';
+import { fromJS, Map, List } from 'immutable';
 
 import * as priceConstants from '../constants/pricesConstants';
 import * as headerConstants from '../constants/headerConstants';
@@ -14,7 +14,7 @@ const initialPrices = fromJS({
 const initialStoreState = new Map({
   currentCoin: 'BTC',
   prices: initialPrices,
-  coinSearchOptions: [],
+  coinSearchOptions: new List(),
 });
 
 const coinPriceUpdate = (state, action) =>

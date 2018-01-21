@@ -4,13 +4,6 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import functional from 'react-functional'
 
-var options = [
-  'John',
-  'Miles',
-  'Charles',
-  'Herbie',
-];
-
 function Header(props) {
   const renderCoinButton = (abbreviation, coinName) => (
     <button type="button" className="btn btn-default navbar-btn" key={abbreviation}
@@ -23,12 +16,12 @@ function Header(props) {
     buttons.concat([renderCoinButton(abbreviation, name)])
   ), []);
 
-  function renderTypeahead() {
+  function renderTypeahead(options) {
     return (
       <nav id="typeahead-container">
         <Typeahead
-          labelKey="name"
-          options={options}
+          labelKey="identifier"
+          options={options.toArray()}
           placeholder="Enter coin name..."
           onInputChange={props.handleInputChange}
         />
@@ -43,7 +36,7 @@ function Header(props) {
           <div className="navbar-header">
             <span className="navbar-brand">Crypto Prices</span>
             {coinButtons}
-            {renderTypeahead()}
+            {renderTypeahead(props.coinSearchOptions)}
           </div>
         </div>
       </nav>
@@ -51,7 +44,7 @@ function Header(props) {
   );
 }
 
-Header.componentDidMount = (props) => {
+Header.componentWillMount = (props) => {
   props.getCoinList(props.setCoinSearchOptions);
 };
 
@@ -62,6 +55,7 @@ Header.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   getCoinList: PropTypes.func.isRequired,
   setCoinSearchOptions: PropTypes.func.isRequired,
+  coinSearchOptions: ImmutablePropTypes.list.isRequired,
 };
 
 export default functional(Header);
