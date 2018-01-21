@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Typeahead } from 'react-bootstrap-typeahead';
+import functional from 'react-functional'
 
 var options = [
   'John',
@@ -50,11 +51,17 @@ function Header(props) {
   );
 }
 
+Header.componentDidMount = (props) => {
+  props.getCoinList(props.setCoinSearchOptions);
+};
+
 Header.propTypes = {
   coin: PropTypes.string.isRequired,
   coinNameUpdate: PropTypes.func.isRequired,
   coinOptions: ImmutablePropTypes.map.isRequired,
   handleInputChange: PropTypes.func.isRequired,
+  getCoinList: PropTypes.func.isRequired,
+  setCoinSearchOptions: PropTypes.func.isRequired,
 };
 
-export default Header;
+export default functional(Header);

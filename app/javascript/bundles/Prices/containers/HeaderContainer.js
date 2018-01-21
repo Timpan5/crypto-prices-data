@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import * as actions from '../actions/headerActionCreators';
+import { coinNameUpdate } from '../actions/headerActionCreators';
 import { Map } from 'immutable';
+import { getCoinList } from '../sources/searchSources';
+import { setCoinSearchOptions } from '../actions/headerActionCreators';
 
 const coinOptions = new Map({
   BTC: 'Bitcoin',
@@ -10,6 +12,11 @@ const coinOptions = new Map({
 
 function handleInputChange(text) {
   alert(text);
+}
+
+const actions = {
+  coinNameUpdate,
+  setCoinSearchOptions,
 }
 
 const mapStateToProps = (state) => {
@@ -25,6 +32,8 @@ const mergeProps = (stateProps, dispatchProps, ownProps)  => {
     coinNameUpdate: dispatchProps.coinNameUpdate,
     coinOptions,
     handleInputChange,
+    getCoinList,
+    setCoinSearchOptions: dispatchProps.setCoinSearchOptions,
   });
 };
 

@@ -1,8 +1,12 @@
 import { connect } from 'react-redux';
 import Prices from '../components/Prices';
-import * as actions from '../actions/pricesActionCreators';
+import { fetchCoinPrice } from '../actions/pricesActionCreators';
 
 const shouldRenderSpinner = (list) => list.isEmpty();
+
+const actions = {
+  fetchCoinPrice,
+};
 
 const mapStateToProps = (state) => {
   const currentCoin = state.get('currentCoin');

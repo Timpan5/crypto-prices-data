@@ -14,6 +14,7 @@ const initialPrices = fromJS({
 const initialStoreState = new Map({
   currentCoin: 'BTC',
   prices: initialPrices,
+  coinSearchOptions: [],
 });
 
 const coinPriceUpdate = (state, action) =>
@@ -25,12 +26,16 @@ const coinNameUpdate = (state, action) => (state.get('currentCoin') !== action.c
   state.set('currentCoin', action.coinName).set('prices', initialPrices)
   : state;
 
+const setCoinSearchOptions = (state, action) => state.set('coinSearchOptions', action.options);
+
 const rootReducer = (state = initialStoreState, action) => {
   switch (action.type) {
     case priceConstants.COIN_PRICE_UPDATE:
       return coinPriceUpdate(state, action);
     case headerConstants.COIN_NAME_UPDATE:
       return coinNameUpdate(state, action);
+    case headerConstants.SET_COIN_SEARCH_OPTIONS:
+      return setCoinSearchOptions(state, action);
     default:
       return state;
   }
