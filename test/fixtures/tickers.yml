@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  identifier: MyText
+  bitfinex: MyText
+  bittrex: MyText
+  poloniex: MyText
+  hitbtc: MyText
+  binance: MyText
+
+two:
+  name: MyText
+  identifier: MyText
+  bitfinex: MyText
+  bittrex: MyText
+  poloniex: MyText
+  hitbtc: MyText
+  binance: MyText

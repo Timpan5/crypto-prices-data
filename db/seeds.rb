@@ -7,5 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 CoinSearch.destroy_all
+CoinSearch.create(name: 'BTC', identifier: 'BTC - Bitcoin')
+CoinSearch.create(name: 'ETH', identifier: 'ETH - Ethereum')
 CoinSearch.create(name: 'ZEC', identifier: 'ZEC - Zcash')
 CoinSearch.create(name: 'XMR', identifier: 'XMR - Monero')
+
+Ticker.destroy_all
+Ticker.create(name: 'BTC', identifier: 'BTC - Bitcoin', bitfinex: 'tBTCUSD', bittrex: 'USDT-BTC', poloniex: 'USDT_BTC', hitbtc: 'BTCUSD', binance: 'BTCUSDT')
+Ticker.create(name: 'ETH', identifier: 'ETH - Ethereum', bitfinex: 'tETHUSD', bittrex: 'USDT-ETH', poloniex: 'USDT_ETH', hitbtc: 'ETHUSD', binance: 'ETHUSDT')
