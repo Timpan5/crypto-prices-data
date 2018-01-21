@@ -6,4 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+CoinSearch.destroy_all
 CoinSearch.create(name: 'ZEC', identifier: 'ZEC - Zcash')
+CoinSearch.create(name: 'XMR', identifier: 'XMR - Monero')
