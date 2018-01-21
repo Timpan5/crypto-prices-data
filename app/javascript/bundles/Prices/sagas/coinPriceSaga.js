@@ -1,11 +1,10 @@
 import { call, takeLatest, select, put } from 'redux-saga/effects';
 import { FETCH_COIN_PRICE } from '../constants/pricesConstants';
-import { getPriceFromBitfinex, getPriceFromBittrex, getPriceFromPoloniex, getPriceFromHitbtc, getPriceFromBinance }
-  from '../sources/priceSources';
 import { coinPriceUpdate } from '../actions/pricesActionCreators';
 import { Map } from 'immutable';
 import { bitcoinTickers, ethereumTickers } from '../constants/tickerConstants';
 import { selectCurrentCoin } from '../selectors/coin';
+import * as externalApi from './externalApi';
 
 function chooseTicker(coin) {
   switch (coin) {
@@ -23,27 +22,18 @@ function* coinPrice(action) {
     const currentCoin = yield select(selectCurrentCoin);
     const currentTicker = chooseTicker(currentCoin);
 
-    const bitfinex = yield call(getPriceFromBitfinex, currentTicker.get('Bitfinex'));
-    const bitfinexPrice = Math.round(bitfinex.data[6]);
-
-    const bittrex = yield call(getPriceFromBittrex, currentTicker.get('Bittrex'));
-    const bittrexPrice = Math.round(bittrex.data.result.Last);
-
-    const poloniex = yield call(getPriceFromPoloniex);
-    const poloniexPrice = Math.round(poloniex.data[currentTicker.get('Poloniex')].last);
-
-    const hitbtc = yield call(getPriceFromHitbtc, currentTicker.get('Hitbtc'));
-    const hitbtcPrice = Math.round(hitbtc.data.last);
-
-    const binance = yield call(getPriceFromBinance);
-    const binancePrice = Math.round(binance.data.find(ticker => ticker.symbol === currentTicker.get('Binance')).price);
+    const bitfinexPrice = yield* externalApi.checkBitfinex(currentTicker);
+    const bittrexPrice = yield* externalApi.checkBittrex(currentTicker);
+    const poloniexPrice = yield* externalApi.checkPoloniex(currentTicker);
+    const hitbtcPrice = yield* externalApi.checkHitbtc(currentTicker);
+    const binancePrice = yield* externalApi.checkBinance(currentTicker);
 
     const pricesMap = new Map({
-      Bitfinex: bitfinexPrice,
-      Bittrex: bittrexPrice,
-      Poloniex: poloniexPrice,
-      Hitbtc: hitbtcPrice,
-      Binance: binancePrice,
+      Bitfinex: bitfinexPrice || null,
+      Bittrex: bittrexPrice || null,
+      Poloniex: poloniexPrice || null,
+      Hitbtc: hitbtcPrice || null,
+      Binance: binancePrice || null,
     })
 
     yield put(coinPriceUpdate(currentCoin, pricesMap));
