@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import Header from '../components/Header';
-import { coinNameUpdate, setTickers } from '../actions/headerActionCreators';
+import { coinNameUpdate, beginCoinSearch } from '../actions/headerActionCreators';
 import { Map } from 'immutable';
-import { getCoinList, searchCoins } from '../sources/searchSources';
+import { getCoinList } from '../sources/searchSources';
 import { setCoinSearchOptions } from '../actions/headerActionCreators';
 
 const coinOptions = new Map({
@@ -13,6 +13,7 @@ const coinOptions = new Map({
 const actions = {
   coinNameUpdate,
   setCoinSearchOptions,
+  beginCoinSearch,
 }
 
 const mapStateToProps = (state) => {
@@ -30,7 +31,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps)  => {
     coin: stateProps.coin,
     coinNameUpdate: dispatchProps.coinNameUpdate,
     coinOptions,
-    handleInputChange: searchCoins,
+    handleInputChange: dispatchProps.beginCoinSearch,
     getCoinList,
     setCoinSearchOptions: dispatchProps.setCoinSearchOptions,
     coinSearchOptions,

@@ -11,12 +11,9 @@ export function getCoinList(setCoinSearchOptions) {
 }
 
 export function searchCoins(search) {
-  axios.get(SEARCH_COIN_URL, {
+  return axios.get(SEARCH_COIN_URL, {
     params: {
       search,
     }
-  })
-  .then((response) => {
-    console.log(response);
   });
 }

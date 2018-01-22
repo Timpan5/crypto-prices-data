@@ -10,7 +10,12 @@ export const setCoinSearchOptions = (options) => ({
   options,
 });
 
+export const beginCoinSearch = (search) => ({
+  type: headerConstants.BEGIN_COIN_SEARCH,
+  search,
+});
+
 export const setTickers = (tickers) => ({
   type: headerConstants.SET_TICKERS,
   tickers,
-}).
+});
