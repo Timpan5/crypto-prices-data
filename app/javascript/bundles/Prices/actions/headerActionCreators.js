@@ -9,3 +9,8 @@ export const setCoinSearchOptions = (options) => ({
   type: headerConstants.SET_COIN_SEARCH_OPTIONS,
   options,
 });
+
+export const setTickers = (tickers) => ({
+  type: headerConstants.SET_TICKERS,
+  tickers,
+}).

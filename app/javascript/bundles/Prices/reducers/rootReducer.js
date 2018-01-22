@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { fromJS, Map, List } from 'immutable';
+import { fromJS } from 'immutable';
 
 import * as priceConstants from '../constants/pricesConstants';
 import * as headerConstants from '../constants/headerConstants';
@@ -11,10 +11,11 @@ const initialPrices = fromJS({
   'ETH': [],
 });
 
-const initialStoreState = new Map({
+const initialStoreState = fromJS({
   currentCoin: 'BTC',
   prices: initialPrices,
-  coinSearchOptions: new List(),
+  coinSearchOptions: [],
+  tickers: {},
 });
 
 const coinPriceUpdate = (state, action) =>
@@ -28,6 +29,8 @@ const coinNameUpdate = (state, action) => (state.get('currentCoin') !== action.c
 
 const setCoinSearchOptions = (state, action) => state.set('coinSearchOptions', action.options);
 
+const setTickers = (state, action) => state.set('tickers', action.tickers);
+
 const rootReducer = (state = initialStoreState, action) => {
   switch (action.type) {
     case priceConstants.COIN_PRICE_UPDATE:
@@ -36,6 +39,8 @@ const rootReducer = (state = initialStoreState, action) => {
       return coinNameUpdate(state, action);
     case headerConstants.SET_COIN_SEARCH_OPTIONS:
       return setCoinSearchOptions(state, action);
+    case headerConstants.SET_TICKERS:
+      return setTickers(state, action);
     default:
       return state;
   }
