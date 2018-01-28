@@ -1,4 +1,19 @@
 #header {
+  #coin-title {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    width: 100px;
+  }
+
+  #coin-select-container {
+    position: absolute;
+    top: 10%;
+    right: 2%;
+  }
+
   background-color: #eff5ff;
   border-bottom: 3px solid #d5dce8;
   margin-bottom: 8px;
@@ -17,6 +32,5 @@
   #typeahead-container {
     float: right;
     width: 300px;
-    margin-top: 4px;
   }
 }

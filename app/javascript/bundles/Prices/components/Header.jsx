@@ -35,8 +35,11 @@ function Header(props) {
         <div className="container-fluid">
           <div className="navbar-header">
             <span className="navbar-brand">Crypto Prices</span>
-            {coinButtons}
-            {renderTypeahead(props.coinSearchOptions)}
+            <span id="coin-title" className="h3">{props.coin}</span>
+            <div id="coin-select-container">
+              {coinButtons}
+              {renderTypeahead(props.coinSearchOptions)}
+            </div>
           </div>
         </div>
       </nav>
