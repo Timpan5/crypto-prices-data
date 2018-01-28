@@ -3,7 +3,7 @@ import { FETCH_COIN_PRICE } from '../constants/pricesConstants';
 import { coinPriceUpdate } from '../actions/pricesActionCreators';
 import { Map } from 'immutable';
 import { bitcoinTickers, ethereumTickers } from '../constants/tickerConstants';
-import { selectCurrentCoin } from '../selectors/coin';
+import { selectCurrentCoin, selectTickers } from '../selectors/coin';
 import * as externalApi from './externalApi';
 
 function chooseTicker(coin) {
@@ -12,15 +12,13 @@ function chooseTicker(coin) {
       return bitcoinTickers;
     case 'ETH':
       return ethereumTickers;
-    default:
-      return bitcoinTickers;
   }
 }
 
 function* coinPrice(action) {
   try {
     const currentCoin = yield select(selectCurrentCoin);
-    const currentTicker = chooseTicker(currentCoin);
+    const currentTicker = chooseTicker(currentCoin) || (yield select(selectTickers));
 
     const bitfinexPrice = yield* externalApi.checkBitfinex(currentTicker);
     const bittrexPrice = yield* externalApi.checkBittrex(currentTicker);

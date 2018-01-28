@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { fromJS } from 'immutable';
+import { fromJS, List } from 'immutable';
 
 import * as priceConstants from '../constants/pricesConstants';
 import * as headerConstants from '../constants/headerConstants';
@@ -24,7 +24,7 @@ const coinPriceUpdate = (state, action) =>
 
 
 const coinNameUpdate = (state, action) => (state.get('currentCoin') !== action.coinName) ?
-  state.set('currentCoin', action.coinName).set('prices', initialPrices)
+  state.set('currentCoin', action.coinName).setIn(['prices', action.coinName], new List())
   : state;
 
 const setCoinSearchOptions = (state, action) => state.set('coinSearchOptions', action.options);
