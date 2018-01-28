@@ -12,7 +12,7 @@ function* updateNameAndTickers(data) {
       Bittrex: data.bittrex,
       Poloniex: data.poloniex,
       Hitbtc: data.hitbtc,
-      Binance: data.binance,
+      OKEx: data.okex,
     });
 
     yield put(setTickers(tickers));

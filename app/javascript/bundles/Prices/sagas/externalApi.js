@@ -1,5 +1,5 @@
 import { call } from 'redux-saga/effects';
-import { getPriceFromBitfinex, getPriceFromBittrex, getPriceFromPoloniex, getPriceFromHitbtc, getPriceFromBinance }
+import { getPriceFromBitfinex, getPriceFromBittrex, getPriceFromPoloniex, getPriceFromHitbtc, getPriceFromOKEx }
   from '../sources/priceSources';
 
 function roundToTwoDecimals(price) {
@@ -46,12 +46,12 @@ export function* checkHitbtc(currentTicker) {
   }
 }
 
-export function* checkBinance(currentTicker) {
+export function* checkOKEx(currentTicker) {
   try {
-    const binance = yield call(getPriceFromBinance);
-    return roundToTwoDecimals(binance.data.find(ticker => ticker.symbol === currentTicker.get('Binance')).price);
+    const OKEx = yield call(getPriceFromOKEx, currentTicker.get('OKEx'));
+    return roundToTwoDecimals(OKEx.data.ticker.last);
   } catch(error) {
-    console.log('checkBinance error: ', error);
+    console.log('checkOKEx error: ', error);
     return null;
   }
 }

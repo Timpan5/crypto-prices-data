@@ -5,7 +5,7 @@ export const bitcoinTickers = new Map ({
   Bittrex: 'USDT-BTC',
   Poloniex: 'USDT_BTC',
   Hitbtc: 'BTCUSD',
-  Binance: 'BTCUSDT',
+  OKEx: 'BTC_USDT',
 });
 
 export const ethereumTickers = new Map ({
@@ -13,5 +13,5 @@ export const ethereumTickers = new Map ({
   Bittrex: 'USDT-ETH',
   Poloniex: 'USDT_ETH',
   Hitbtc: 'ETHUSD',
-  Binance: 'ETHUSDT',
+  OKEx: 'ETH_USDT',
 });

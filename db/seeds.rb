@@ -5,7 +5,7 @@ CoinSearch.create(name: 'ZEC', identifier: 'ZEC - Zcash')
 CoinSearch.create(name: 'XMR', identifier: 'XMR - Monero')
 
 Ticker.destroy_all
-Ticker.create(name: 'BTC', identifier: 'BTC - Bitcoin', bitfinex: 'tBTCUSD', bittrex: 'USDT-BTC', poloniex: 'USDT_BTC', hitbtc: 'BTCUSD', binance: 'BTCUSDT')
-Ticker.create(name: 'ETH', identifier: 'ETH - Ethereum', bitfinex: 'tETHUSD', bittrex: 'USDT-ETH', poloniex: 'USDT_ETH', hitbtc: 'ETHUSD', binance: 'ETHUSDT')
-Ticker.create(name: 'ZEC', identifier: 'ZEC - Zcash', bitfinex: 'tZECUSD', bittrex: 'USDT-ZEC', poloniex: 'USDT_ZEC', hitbtc: 'ZECUSD', binance: 'ZECUSDT')
-Ticker.create(name: 'XMR', identifier: 'XMR - Monero', bitfinex: 'tXMRUSD', bittrex: 'USDT-XMR', poloniex: 'USDT_XMR', hitbtc: 'XMRUSD', binance: 'XMRUSDT')
+Ticker.create(name: 'BTC', identifier: 'BTC - Bitcoin', bitfinex: 'tBTCUSD', bittrex: 'USDT-BTC', poloniex: 'USDT_BTC', hitbtc: 'BTCUSD', okex: 'BTC_USDT')
+Ticker.create(name: 'ETH', identifier: 'ETH - Ethereum', bitfinex: 'tETHUSD', bittrex: 'USDT-ETH', poloniex: 'USDT_ETH', hitbtc: 'ETHUSD', okex: 'ETH_USDT')
+Ticker.create(name: 'ZEC', identifier: 'ZEC - Zcash', bitfinex: 'tZECUSD', bittrex: 'USDT-ZEC', poloniex: 'USDT_ZEC', hitbtc: 'ZECUSD', okex: 'ZEC_USDT')
+Ticker.create(name: 'XMR', identifier: 'XMR - Monero', bitfinex: 'tXMRUSD', bittrex: 'USDT-XMR', poloniex: 'USDT_XMR', hitbtc: 'XMRUSD', okex: 'XMR_USDT')

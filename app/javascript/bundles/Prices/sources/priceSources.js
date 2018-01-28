@@ -4,7 +4,7 @@ const BITFINEX_BASE_URL = 'https://api.bitfinex.com/v2/ticker/';
 const BITTREX_BASE_URL = 'https://bittrex.com/api/v1.1/public/getticker?market=';
 const POLONIEX_BASE_URL = 'https://poloniex.com/public?command=returnTicker';
 const HITBTC_BASE_URL = 'https://api.hitbtc.com/api/2/public/ticker/';
-const BINANCE_BASE_URL = 'https://api.binance.com/api/v1/ticker/allPrices';
+const OKEX_BASE_URL = 'https://www.okex.com/api/v1/ticker.do?symbol=';
 
 export function getPriceFromBitfinex(ticker) {
   const url = `${BITFINEX_BASE_URL}${ticker}`;
@@ -26,7 +26,7 @@ export function getPriceFromHitbtc(ticker) {
   return axios.get(url);
 }
 
-export function getPriceFromBinance() {
-  const url = `${BINANCE_BASE_URL}`;
+export function getPriceFromOKEx(ticker) {
+  const url = `${OKEX_BASE_URL}${ticker}`;
   return axios.get(url);
 }

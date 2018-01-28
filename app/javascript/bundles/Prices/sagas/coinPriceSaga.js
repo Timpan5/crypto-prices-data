@@ -24,14 +24,14 @@ function* coinPrice(action) {
     const bittrexPrice = yield* externalApi.checkBittrex(currentTicker);
     const poloniexPrice = yield* externalApi.checkPoloniex(currentTicker);
     const hitbtcPrice = yield* externalApi.checkHitbtc(currentTicker);
-    const binancePrice = yield* externalApi.checkBinance(currentTicker);
+    const OKExPrice = yield* externalApi.checkOKEx(currentTicker);
 
     const pricesMap = new Map({
       Bitfinex: bitfinexPrice || null,
       Bittrex: bittrexPrice || null,
       Poloniex: poloniexPrice || null,
       Hitbtc: hitbtcPrice || null,
-      Binance: binancePrice || null,
+      OKEx: OKExPrice || null,
     })
 
     yield put(coinPriceUpdate(currentCoin, pricesMap));

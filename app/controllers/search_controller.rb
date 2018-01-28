@@ -11,6 +11,6 @@ class SearchController < ApplicationController
     search_term = params[:search]
     result = Ticker.find_by(name: search_term) || Ticker.find_by(identifier: search_term)
 
-    render :json => result.to_json(only:['name', 'bitfinex', 'bittrex', 'poloniex', 'hitbtc', 'binance'])
+    render :json => result.to_json(only:['name', 'bitfinex', 'bittrex', 'poloniex', 'hitbtc', 'okex'])
   end
 end

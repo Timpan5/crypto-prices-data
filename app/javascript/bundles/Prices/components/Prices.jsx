@@ -23,7 +23,7 @@ function renderPriceChart(priceData) {
            <Line type="monotone" dataKey="Bittrex" stroke="#82ca9d" activeDot={{r: 8}}/>
            <Line type="monotone" dataKey="Poloniex" stroke="#ed1047" activeDot={{r: 8}}/>
            <Line type="monotone" dataKey="Hitbtc" stroke="#15f7d1" activeDot={{r: 8}}/>
-           <Line type="monotone" dataKey="Binance" stroke="#f7ab15" activeDot={{r: 8}}/>
+           <Line type="monotone" dataKey="OKEx" stroke="#f7ab15" activeDot={{r: 8}}/>
         </LineChart>
       </ResponsiveContainer>
     </div>
