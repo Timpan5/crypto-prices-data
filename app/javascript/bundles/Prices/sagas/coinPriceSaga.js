@@ -1,4 +1,4 @@
-import { call, takeLatest, select, put } from 'redux-saga/effects';
+import { call, select, put, take } from 'redux-saga/effects';
 import { FETCH_COIN_PRICE } from '../constants/pricesConstants';
 import { coinPriceUpdate } from '../actions/pricesActionCreators';
 import { Map } from 'immutable';
@@ -41,8 +41,11 @@ function* coinPrice(action) {
   }
 }
 
-export function* coinPriceSaga() {
-  yield takeLatest(FETCH_COIN_PRICE, coinPrice);
+export function* coinPriceSaga(action) {
+  while (true) {
+    const action = yield take(FETCH_COIN_PRICE);
+    yield call(coinPrice, action);
+  }
 }
 
 export default coinPriceSaga;
