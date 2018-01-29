@@ -1,13 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-
-import store from '../store/pricesStore';
+import getStore from '../store/pricesStore';
 import AppLayout from '../components/AppLayout';
 
-const PricesApp = (props) => (
-  <Provider store={store}>
-    <AppLayout />
-  </Provider>
-);
+function PricesApp(props) {
+  return (
+    <Provider store={getStore(props.dev_environment)}>
+      <AppLayout />
+    </Provider>
+  );
+}
 
 export default PricesApp;

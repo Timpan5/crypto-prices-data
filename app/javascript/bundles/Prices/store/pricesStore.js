@@ -4,11 +4,11 @@ import createSagaMiddleware from 'redux-saga'
 import rootReducer from '../reducers/rootReducer';
 import rootSaga from '../sagas/rootSaga';
 
-const sagaMiddleware = createSagaMiddleware();
-
-const store = createStore(rootReducer, compose(applyMiddleware(sagaMiddleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
-
-sagaMiddleware.run(rootSaga);
-
-export default store;
+export default function getStore(dev) {
+  const sagaMiddleware = createSagaMiddleware();
+  const store = dev && window.__REDUX_DEVTOOLS_EXTENSION__
+    ? createStore(rootReducer, compose(applyMiddleware(sagaMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__()))
+    : createStore(rootReducer, applyMiddleware(sagaMiddleware));
+  sagaMiddleware.run(rootSaga);
+  return store;
+}
