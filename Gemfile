@@ -38,6 +38,7 @@ gem 'pg'
 gem 'react_on_rails', '10.0.2'
 gem 'bootstrap', '~> 4.0.0.beta3'
 gem 'jquery-rails'
+gem 'http'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
