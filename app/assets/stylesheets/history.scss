@@ -1,7 +1,17 @@
 #history-container {
-  .date-selector div {
+  h1 {
+    margin-left: 4px;
+  }
+  .date-selector {
     display: inline-block;
-    margin: 0 2px;
+    width: 500px;
+    div {
+      display: inline-block;
+      margin: 0 2px;
+    }
+    .label {
+      margin-left: 33%;
+    }
   }
   .year {
     width: 100px;

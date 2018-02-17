@@ -31,6 +31,7 @@ const renderDate = (date, onChange) => renderSelect('date', date, onChange, date
 function SelectDropdown(props) {
   return (
     <div className="date-selector">
+      <h5 className="label">{props.label}</h5>
       {renderYear(props.year, props.yearChangeHandler)}
       {renderMonth(props.month, props.monthChangeHandler)}
       {renderDate(props.date, props.dateChangeHandler)}
@@ -39,6 +40,7 @@ function SelectDropdown(props) {
 }
 
 SelectDropdown.propTypes = {
+  label: PropTypes.string.isRequired,
   year: PropTypes.string,
   month: PropTypes.string,
   date: PropTypes.string,

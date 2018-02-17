@@ -13,6 +13,7 @@ function mergeProps(stateProps, dispatchProps, ownProps) {
   const changeHandler = ownProps.changeHandler;
 
   return ({
+    label: ownProps.label,
     year: historyValues.get('year', null),
     month: historyValues.get('month', null),
     date: historyValues.get('date', null),
