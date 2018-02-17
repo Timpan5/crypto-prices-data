@@ -3,7 +3,7 @@ import React from 'react';
 import functional from 'react-functional'
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Label } from 'recharts';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import PriceBoxContainer from '../containers//PriceBoxContainer';
+import PriceBoxContainer from '../containers/PriceBoxContainer';
 import ReactLoading from 'react-loading';
 
 const renderSpinner = () => (<ReactLoading className='spinner' type="spokes" color="#94ff11" />);

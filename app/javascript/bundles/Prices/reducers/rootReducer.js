@@ -3,6 +3,7 @@ import { fromJS, List } from 'immutable';
 
 import * as priceConstants from '../constants/pricesConstants';
 import * as headerConstants from '../constants/headerConstants';
+import * as historyConstants from '../constants/historyConstants';
 
 const MAX_CHART_DATA_POINTS = 25;
 
@@ -16,6 +17,8 @@ const initialStoreState = fromJS({
   prices: initialPrices,
   coinSearchOptions: [],
   tickers: {},
+  historyStart: {},
+  historyEnd: {},
 });
 
 const coinPriceUpdate = (state, action) =>
@@ -31,6 +34,10 @@ const setCoinSearchOptions = (state, action) => state.set('coinSearchOptions', a
 
 const setTickers = (state, action) => state.set('tickers', action.tickers);
 
+const setHistoryStartAttr = (state, action) => state.setIn(['historyStart', action.attr], action.value);
+
+const setHistoryEndAttr = (state, action) => state.setIn(['historyEnd', action.attr], action.value);
+
 const rootReducer = (state = initialStoreState, action) => {
   switch (action.type) {
     case priceConstants.COIN_PRICE_UPDATE:
@@ -41,6 +48,10 @@ const rootReducer = (state = initialStoreState, action) => {
       return setCoinSearchOptions(state, action);
     case headerConstants.SET_TICKERS:
       return setTickers(state, action);
+    case historyConstants.SET_HISTORY_START_ATTR:
+      return setHistoryStartAttr(state, action);
+    case historyConstants.SET_HISTORY_END_ATTR:
+      return setHistoryEndAttr(state, action);
     default:
       return state;
   }
