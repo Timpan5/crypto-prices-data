@@ -18,6 +18,7 @@ function History(props) {
       <h1 className="display-4">Historical Data</h1>
       {renderDateSelect("Start Date", "historyStart", props.setHistoryStartAttr)}
       {renderDateSelect("End Date", "historyEnd", props.setHistoryEndAttr)}
+      <button onClick={props.beginHistoryLookup}>Lookup</button>
     </div>
   );
 }
@@ -25,6 +26,7 @@ function History(props) {
 History.propTypes = {
   setHistoryStartAttr: PropTypes.func.isRequired,
   setHistoryEndAttr: PropTypes.func.isRequired,
+  beginHistoryLookup: PropTypes.func.isRequired,
 };
 
 export default History;

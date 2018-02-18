@@ -11,3 +11,7 @@ export const setHistoryEndAttr = (attr, value) => ({
   attr,
   value,
 });
+
+export const beginHistoryLookup = () => ({
+  type: historyConstants.BEGIN_HISTORY_LOOKUP,
+});

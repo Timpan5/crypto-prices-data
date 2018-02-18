@@ -1,4 +1,4 @@
-import { call, takeLatest, select, put } from 'redux-saga/effects';
+import { call, takeLatest, put } from 'redux-saga/effects';
 import { BEGIN_COIN_SEARCH } from '../constants/headerConstants';
 import { searchCoins } from '../sources/searchSources';
 import { coinNameUpdate, setTickers } from '../actions/headerActionCreators';
