@@ -1,10 +1,7 @@
 import { call } from 'redux-saga/effects';
 import { getPriceFromBitfinex, getPriceFromBittrex, getPriceFromPoloniex, getPriceFromHitbtc, getPriceFromOKEx }
   from '../sources/priceSources';
-
-function roundToTwoDecimals(price) {
-  return +(Number(price).toFixed(2));
-}
+import { roundToTwoDecimals } from '../utils/parsePriceString';
 
 export function* checkBitfinex(currentTicker) {
   try {
