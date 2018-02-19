@@ -15,7 +15,7 @@ function renderPriceChart(priceData) {
         <LineChart width={800} height={400} data={priceData.toJS()}
            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
            <XAxis dataKey="name"/>
-           <YAxis type="number" domain={['dataMin - 5', 'dataMax + 5']} allowDecimals={false} scale="linear" />
+           <YAxis type="number" domain={['dataMin - 5', 'dataMax + 5']} allowDecimals={false} scale="linear" label={{ value: 'Price (USD)', angle: -90, position: 'left' }} />
            <CartesianGrid strokeDasharray="3"/>
            <Tooltip/>
            <Legend />

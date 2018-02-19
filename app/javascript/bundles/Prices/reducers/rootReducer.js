@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import { fromJS, List } from 'immutable';
 
 import * as priceConstants from '../constants/pricesConstants';
@@ -38,6 +37,8 @@ const setHistoryStartAttr = (state, action) => state.setIn(['historyStart', acti
 
 const setHistoryEndAttr = (state, action) => state.setIn(['historyEnd', action.attr], action.value);
 
+const setHistoryData = (state, action) => state.set('historyData', action.data);
+
 const rootReducer = (state = initialStoreState, action) => {
   switch (action.type) {
     case priceConstants.COIN_PRICE_UPDATE:
@@ -52,6 +53,8 @@ const rootReducer = (state = initialStoreState, action) => {
       return setHistoryStartAttr(state, action);
     case historyConstants.SET_HISTORY_END_ATTR:
       return setHistoryEndAttr(state, action);
+    case historyConstants.SET_HISTORY_DATA:
+      return setHistoryData(state, action);
     default:
       return state;
   }

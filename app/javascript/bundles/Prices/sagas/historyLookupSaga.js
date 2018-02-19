@@ -3,6 +3,7 @@ import { BEGIN_HISTORY_LOOKUP } from '../constants/historyConstants';
 import { selectHistoryStart, selectHistoryEnd } from '../selectors/history';
 import { priceHistoryLookup } from '../sources/historySources';
 import { roundToTwoDecimals } from '../utils/parsePriceString';
+import { setHistoryData } from '../actions/historyActionCreators';
 
 function* historyLookup() {
   try {
@@ -21,8 +22,7 @@ function* historyLookup() {
       return arr;
     }, []);
 
-    debugger;
-
+    yield put(setHistoryData(chartData));
   } catch (error) {
     console.log('historyLookupSaga error: ', error);
   }
