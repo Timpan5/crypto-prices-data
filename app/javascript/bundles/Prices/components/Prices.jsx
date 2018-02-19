@@ -33,6 +33,7 @@ function renderPriceChart(priceData) {
 function Prices(props) {
   return (
     <div>
+      <h1 className="display-5">Live Data</h1>
       <PriceBoxContainer />
       {props.renderSpinner ? renderSpinner() : renderPriceChart(props.priceData)}
     </div>

@@ -33,7 +33,7 @@ function renderHistoryChart(historyData) {
 function History(props) {
   return (
     <div id="history-container">
-      <h1 className="display-4">Historical Data</h1>
+      <h1 className="display-5">Historical Data</h1>
       {renderDateSelect("Start Date", "historyStart", props.setHistoryStartAttr)}
       {renderDateSelect("End Date", "historyEnd", props.setHistoryEndAttr)}
       <button className="btn btn-info" onClick={props.beginHistoryLookup}>Lookup</button>
