@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const BITFINEX_BASE_URL = 'https://api.bitfinex.com/v2/ticker/';
-const BITTREX_BASE_URL = 'https://bittrex.com/api/v1.1/public/getticker?market=';
+const BITTREX_BASE_URL = 'api/v1.1/public/getticker?market=';
 const POLONIEX_BASE_URL = 'https://poloniex.com/public?command=returnTicker';
-const HITBTC_BASE_URL = 'https://api.hitbtc.com/api/2/public/ticker/';
-const OKEX_BASE_URL = 'https://www.okex.com/api/v1/ticker.do?symbol=';
+const HITBTC_BASE_URL = 'api/2/public/ticker/';
+const OKEX_BASE_URL = 'api/v1/ticker.do?symbol=';
 
 export function getPriceFromBitfinex(ticker) {
   const url = `${BITFINEX_BASE_URL}${ticker}`;

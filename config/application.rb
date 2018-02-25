@@ -8,6 +8,12 @@ Bundler.require(*Rails.groups)
 
 module CryptoPrices
   class Application < Rails::Application
+    config.middleware.insert(0, Rack::ReverseProxy) do
+      reverse_proxy_options preserve_host: true
+      reverse_proxy '/api/v1.1/public/getticker', 'https://bittrex.com/'
+      reverse_proxy '/api/2/public/ticker/', 'https://api.hitbtc.com/'
+      reverse_proxy '/api/v1/ticker.do', 'https://www.okex.com/'
+    end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
