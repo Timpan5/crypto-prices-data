@@ -5,6 +5,7 @@ import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tool
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PriceBoxContainer from '../containers/PriceBoxContainer';
 import ReactLoading from 'react-loading';
+// import PricePanelContainer from '../containers/PricePanelContainer';
 
 const renderSpinner = () => (<ReactLoading className='spinner' type="spokes" color="#94ff11" />);
 
